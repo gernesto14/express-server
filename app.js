@@ -1,7 +1,4 @@
-import dotenv from "dotenv";
-if (process.env.NODE_ENV !== "production") {
-  dotenv.config();
-}
+import "dotenv/config";
 
 import express from "express";
 import path from "path";
