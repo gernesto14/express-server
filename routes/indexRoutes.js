@@ -3,7 +3,8 @@ const router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: `Express: ${process.env.TEXT}` });
+  // res.render("index", { title: `Express: ${process.env.TEXT}` });
+  res.json({ message: "Welcome to the API" });
 });
 
 export default router;

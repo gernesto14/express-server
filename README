@@ -1,0 +1,99 @@
+# Express.js Modular Boilerplate
+
+A clean and scalable Express.js boilerplate using best practices:
+
+## 🗂 Folder Structure
+
+```
+express-app/
+├── www                   # Startup script
+├── config/               # Configuration files
+│   ├── db.js
+│   ├── middleware.js
+│   ├── SuperTokens.js
+│   └── viewEngine.js
+├── controllers/          # Request handlers
+├── docs/                 # Documentation files
+├── jobs/                 # Scheduled/cron jobs
+├── middlewares/          # Custom middleware
+│   └── errorHandlers.js
+├── models/               # DB models
+├── node_modules/
+├── public/               # Static files
+├── stylesheets/          # CSS styles
+│   └── style.css
+├── routes/               # Express route definitions
+│   ├── indexRoutes.js
+│   └── usersRoutes.js
+├── scripts/              # Utility scripts
+├── services/             # Business logic
+│   └── userService.js
+├── tests/                # Test files
+├── utils/                # Reusable utilities
+│   └── tenantDbClient.js
+├── validators/           # Validation logic
+├── .env                  # Environment variables
+├── .gitignore
+├── app.js                # Express app configuration
+├── docker-compose.yml    # Docker compose file
+├── Dockerfile            # Docker configuration
+├── package-lock.json
+├── package.json
+└── README.md
+```
+
+## 🚀 Getting Started
+
+1. **Clone the repo**  
+```bash
+git clone https://github.com/gernesto14/express-boilerplate.git
+cd express-boilerplate
+```
+
+2. **Install dependencies**  
+```bash
+npm install
+```
+
+3. **Configure `.env`**  
+```env
+PORT=3000
+DB_NAME=your_db
+DB_USER=your_user
+DB_PASS=your_password
+DB_HOST=localhost
+```
+
+4. **Run the app**  
+```bash
+npm start
+```
+
+## ✅ Features
+
+- Clean controller/service separation
+- Centralized error handling
+- Modular middlewares and routes
+- PostgreSQL with pg or Sequelize
+- ES module support
+- Static files served from `/public`
+- Docker-ready deployment
+- View engine and styles support
+
+## 📦 Scripts in `package.json`
+
+```json
+"scripts": {
+  "start": "node ./www",
+  "dev": "nodemon ./www"
+}
+```
+
+## 🧪 Testing (Optional)
+Add tests under `/tests` using Jest, Supertest, etc.
+
+## 📄 Documentation
+Place API specs, Swagger docs, or architecture notes inside `/docs`.
+
+## 🔧 Customization
+Use `/utils`, `/scripts`, `/jobs`, or `/validators` to extend the app's capabilities.
