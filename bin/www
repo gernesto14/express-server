@@ -3,14 +3,15 @@
 import app from "../app.js";
 import debugModule from "debug";
 import http from "http";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
-dotenv.config();
+console.log("Starting server...");
+// dotenv.config();
 const debug = debugModule("backend:server");
 
 // Normalize port/host
 const host = process.env.HOST || "0.0.0.0";
-const port = normalizePort(process.env.PORT || "4001");
+const port = normalizePort(process.env.PORT);
 app.set("port", port);
 
 // Create HTTP server

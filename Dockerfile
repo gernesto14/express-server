@@ -1,20 +1,38 @@
-# Use the official Node.js image as a base
-FROM node:18-alpine
+# Dockerfile
 
-# Set the working directory inside the container
+# ---------- BUILD STAGE ----------
+FROM node:18-alpine AS builder
+
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to the working directory
+# Only copy package files to install deps
 COPY package*.json ./
 
-# Install dependencies, including dev dependencies for nodemon
-RUN npm install
+# Install all deps (including dev if needed)
+RUN npm ci
 
-# Copy the rest of the application code to the working directory
+# Copy all source files
 COPY . .
 
-# Expose the port that the app runs on
-EXPOSE 3000
+# ---------- RUNTIME STAGE ----------
+FROM node:18-alpine
 
-# Command to run the application using nodemon
-CMD ["npm", "start"]
+WORKDIR /usr/src/app
+
+# Install tini for better signal handling (optional but recommended)
+RUN apk add --no-cache tini
+
+# Copy node_modules and built app from builder stage
+COPY --from=builder /usr/src/app /usr/src/app
+
+# Set environment variable for production
+# ENV NODE_ENV=production
+
+# Expose your app port
+EXPOSE 4001
+
+# Use tini as init system to handle SIGINT/SIGTERM properly
+ENTRYPOINT ["/sbin/tini", "--"]
+
+# Start app
+CMD ["node", "bin/www"]

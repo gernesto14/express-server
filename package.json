@@ -4,16 +4,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npx nodemon node ./bin/www"
+    "start": "NODE_ENV=production nodemon node ./bin/www",
+    "dev": "NODE_ENV=development nodemon node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
-    "express": "~4.16.1",
+    "express": "^4.21.2",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
+    "morgan": "^1.10.1",
     "nodemon": "^3.1.10",
-    "supertokens-node": "^21.1.0"
+    "supertokens-node": "^21.1.2",
+    "validator": "^13.15.15"
   }
 }
