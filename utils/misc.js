@@ -165,4 +165,4 @@ export function generateApiKey() {
   console.log(apiKey);
 }
 
-generateApiKey();
+// generateApiKey();
